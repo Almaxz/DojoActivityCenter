@@ -1,0 +1,75 @@
+@model DojoActivity
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+    <h1 class="navbar-brand" style="font-size: 2.5em; padding-left: 2.5%;">Dojo Activity Center</h1>
+    <div class="form-inline my-2 my-lg-0" style="margin-top: 2.5%; padding-right: 2.5%; display: flex; justify-content: flex-end;">
+        <a href="/dojocenter" style="margin-right: 2%;"><button class="btn btn-info">DojoCenter</button></a>
+        <a href="/logout"><button class="btn btn-info">Logout</button></a>
+    </div>
+</nav>
+<hr style="height: 2px; background-color: #337ab7; border: none;">
+
+<div>
+    <p><span asp-validation-for="Title"></span></p>
+    <p><span asp-validation-for="Date"></span></p>
+    <p><span asp-validation-for="Time"></span></p>
+    <p><span asp-validation-for="Duration"></span></p>
+    <p><span asp-validation-for="DurationUnit"></span></p>
+    <p><span asp-validation-for="Description"></span></p>
+</div>
+
+
+<div>
+    <form action="/activity/create" method="POST">
+        <div class="form-group row">
+            <label for="Title" class="col-sm-6 col-form-label">Title: </label>
+            <div  class="col-sm-12">
+                <input type="text" name="Title" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Date" class="col-sm-6 col-form-label">Date: </label>
+            <div  class="col-sm-12">
+                <input type="date" name="Date" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Time" class="col-sm-6 col-form-label">Time: </label>
+            <div  class="col-sm-12">
+                <input type="time" name="Time" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-inline row">
+            <label for="Duration" class="col-sm-12 col-form-label">Duration: </label>
+            <div class="form-inline">
+                <div class="col-sm-6">
+                    <input type="int" name="Duration" class="form-control"/>
+                </div>
+                <div class="col-sm-6">
+                    <select name="DurationUnit" id="Duration" class="form-control">
+                        <option value="Day">Day</option>
+                        <option value="Hour">Hour</option>
+                        <option value="Minute">Minute</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Description" class="col-sm-6 col-form-label">Description: </label>
+            <div  class="col-sm-12">
+                <textarea name="Description" class="form-control"/></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12 offset-sm-4">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>

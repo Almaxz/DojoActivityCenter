@@ -1,0 +1,48 @@
+@model User
+<h1>Registration</h1>
+
+<div>
+    <p><span asp-validation-for="Name"></span></p>
+    <p><span asp-validation-for="Email"></span></p>
+    <p><span asp-validation-for="Password"></span></p>
+    <p><span asp-validation-for="PwConfirmation"></span></p>
+</div>
+
+<div>
+    <form action="/register" method="POST">
+
+        <div class="form-group row">
+            <label for="Name" class="col-sm-6 col-form-label">Name: </label>
+            <div  class="col-sm-12">
+                <input type="text" name="Name" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Email" class="col-sm-6 col-form-label">Email Address: </label>
+            <div  class="col-sm-12">
+                <input type="email" name="Email" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Password" class="col-sm-6 col-form-label">Password: </label>
+            <div  class="col-sm-12">
+                <input type="password" name="Password" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="PwConfirmation" class="col-sm-6 col-form-label">Password Confirmation: </label>
+            <div  class="col-sm-12">
+                <input type="password" name="PwConfirmation" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12 offset-sm-4">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>

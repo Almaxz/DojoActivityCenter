@@ -1,0 +1,62 @@
+@model DojoActivity
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+    <h1 class="navbar-brand" style="font-size: 2.5em; padding-left: 2.5%;">Dojo Activity Center</h1>
+    <div class="form-inline my-2 my-lg-0" style="padding-right: 2.5%; display: flex; justify-content: flex-end;">
+        <h2 class="navbar-brand">Welcome, @ViewBag.User.Name</h2>
+        <a href="/logout" style="margin-top: 3%;"><button class="btn btn-info">Logout</button></a>
+    </div>
+</nav>
+<hr style="height: 2px; background-color: #337ab7; border: none;">
+
+<table class="table table-striped">
+    <tr>
+        <th>Activity</th>
+        <th>Date & Time</th>
+        <th>Duration</th>
+        <th>Coordinator</th>
+        <th># of Participants</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var a in ViewBag.Activities)
+    {
+        if(a.Date >= DateTime.Now)
+        {
+        <tr>
+            <td><a href="/activityInfo/@a.ActivityId">@a.Title</a></td>
+            <td>@a.Date.ToString("MMMM dd") @a.Time.ToString("@HH:mm")</td>
+            <td>@a.Duration @a.DurationUnit</td>
+            <td>@a.Coordinator.Name</td>
+            <td>@a.UserParticipating.Count</td>
+            <td>
+                @{
+                    bool isGoing = false;
+                    foreach(var p in a.UserParticipating)
+                    {
+                        if(p.UserId == ViewBag.User.UserId)
+                        {
+                            isGoing = true;
+                            break;
+                        }
+                    }
+                    if(a.CoordinatorId == ViewBag.User.UserId)
+                    {
+                        <a href="/delete/@a.ActivityId" class="btn btn-danger btn-xs">Delete</a>
+                    }
+                    else if(isGoing)
+                    {
+                        <a href="/leave/@a.ActivityId" class="btn btn-warning btn-xs">Leave</a> 
+                    }
+                    else
+                    {
+                        <a href="/join/@a.ActivityId" class="btn btn-primary btn-xs">Join</a>   
+                    }
+                }
+            </td>
+        </tr>
+        }
+    }
+</table>
+
+
+<a href="/activity/new" class="btn btn-info">Create an Activitiy</a>

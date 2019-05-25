@@ -1,0 +1,60 @@
+@model DojoActivity
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+    <h1 class="navbar-brand" style="font-size: 2.5em; padding-left: 2.5%;">Dojo Activity Center</h1>
+    <div class="form-inline my-2 my-lg-0" style="margin-top: 2.5%; padding-right: 2.5%; display: flex; justify-content: flex-end;">
+        <a href="/dojocenter" style="margin-right: 2%;"><button class="btn btn-info">DojoCenter</button></a>
+        <a href="/logout"><button class="btn btn-info">Logout</button></a>
+    </div>
+</nav>
+<hr style="height: 2px; background-color: #337ab7; border: none;">
+<div style="display: flex; justify-content: space-evenly;">
+    <h1>@ViewBag.Activities.Title</h1>
+    <div style="margin-top: 2.5%;">
+        @{
+            bool isGoing = false;
+            foreach(var p in ViewBag.Activities.UserParticipating)
+            {
+                if(p.UserId == ViewBag.Users)
+                {
+                    isGoing = true;
+                    break;
+                } 
+            }
+            if(ViewBag.Activities.CoordinatorId == ViewBag.Users)
+            {
+                <a href="/delete/@ViewBag.Activities.ActivityId" class="btn btn-danger btn-xs">Delete</a>
+            }
+            else if(isGoing)
+            {
+                <a href="/leave/@ViewBag.Activities.ActivityId" class="btn btn-warning btn-xs">Leave</a> 
+            }
+            else
+            {
+                <a href="/join/@ViewBag.Activities.ActivityId" class="btn btn-primary btn-xs">Join</a>   
+            }
+        }
+    </div>
+</div>
+
+<div style="border: 1px solid #337ab;">
+    <div>
+        <h3>Coordinator: @ViewBag.Activities.Coordinator.Name</h3>
+    </div>
+    <div>
+        <h3>Description:</h3>
+        <p>@ViewBag.Activities.Description</p>
+    </div>
+    <div>
+        <h3>Participants:</h3> 
+        <ol>
+                @foreach(var part in ViewBag.Activities.UserParticipating)
+                {
+                    <h4>
+                        <li>@part.Ninja.Name</li>
+                    </h4>
+                }
+        </ol>
+    </div>
+</div>
+

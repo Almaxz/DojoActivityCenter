@@ -11581,11 +11581,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Zheng\\Onedrive\\Desktop\\Coding_Dojo\\CSharp_DotNet\\AspDotnet\\CSharpBeltExam\\DojoActivities\\DojoActivities.csproj",
+      "projectUniqueName": "C:\\Users\\Zheng\\OneDrive\\desktop\\DojoActivities\\DojoActivities.csproj",
       "projectName": "DojoActivities",
-      "projectPath": "c:\\Users\\Zheng\\Onedrive\\Desktop\\Coding_Dojo\\CSharp_DotNet\\AspDotnet\\CSharpBeltExam\\DojoActivities\\DojoActivities.csproj",
+      "projectPath": "C:\\Users\\Zheng\\OneDrive\\desktop\\DojoActivities\\DojoActivities.csproj",
       "packagesPath": "C:\\Users\\Zheng\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Zheng\\Onedrive\\Desktop\\Coding_Dojo\\CSharp_DotNet\\AspDotnet\\CSharpBeltExam\\DojoActivities\\obj\\",
+      "outputPath": "C:\\Users\\Zheng\\OneDrive\\desktop\\DojoActivities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
